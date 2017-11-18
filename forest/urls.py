@@ -20,5 +20,5 @@ from files.apis.urls import router as files_api_router
 urlpatterns = [
     url(r'^files/', include('files.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^api/files', include(files_api_router.urls)),
+    url(r'^api/files/', include(files_api_router.urls)),
 ]
