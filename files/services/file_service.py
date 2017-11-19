@@ -1,6 +1,11 @@
+import os
+
+from files.domains.file import File
+
+
 class FileService:
-    def list(self, uuid=None):
-        return []
+    def list(self):
+        return File.roots()
 
     def get(self, uuid):
         return {

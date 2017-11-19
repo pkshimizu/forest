@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 
 from files.apis.serializers import FileItemSerializer, FileSerializer
-from files.services.FileService import FileService
+from files.services.file_service import FileService
 
 
 class FileViewSet(viewsets.ViewSet):
