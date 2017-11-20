@@ -23,11 +23,8 @@ class FileType(Enum):
 
 class File:
     def __init__(self, path):
-        self.uuid = File.calc_uuid(path)
-        self.path = path
-        self.name = os.path.basename(path)
-        self.size = os.path.getsize(path)
-        self.type = FileType.find_by_path(path)
+        self._uuid = File.calc_uuid(path)
+        self._path = path
 
     @staticmethod
     def roots():
@@ -40,6 +37,26 @@ class File:
     @staticmethod
     def calc_uuid(path):
         return str(uuid.uuid5(uuid.NAMESPACE_URL, 'file://%s' % path))
+
+    @property
+    def uuid(self):
+        return self._uuid
+
+    @property
+    def path(self):
+        return self._path
+
+    @property
+    def name(self):
+        return os.path.basename(self.path)
+
+    @property
+    def size(self):
+        return os.path.getsize(self.path)
+
+    @property
+    def type(self):
+        return FileType.find_by_path(self.path)
 
     @property
     def children(self):
