@@ -5,6 +5,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from files.domains.file import File
 from files.models import Path
 
+import logging
+
 
 class FileService:
     def list(self):
@@ -29,7 +31,9 @@ class FileService:
             )
 
     def analyze(self, file):
-        file_children = {child.uuid: child for child in file.children()}
+        logging.info('target dir', file.path)
+        print("target dir: " + file.path)
+        file_children = {child.uuid: child for child in file.children}
         path_children = [path.uuid for path in Path.objects.filter(parent_uuid=file.uuid)]
 
         add_paths = []
@@ -38,7 +42,7 @@ class FileService:
         if not Path.objects.filter(uuid=file.uuid).exists():
             add_paths.append(Path(uuid=file.uuid, path=file.path, parent_uuid=None))
 
-        for file_child in file_children.keys():
+        for file_child in file_children.values():
             if file_child not in path_children:
                 add_paths.append(Path(uuid=file_child.uuid, path=file_child.path, parent_uuid=file.uuid))
 

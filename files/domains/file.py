@@ -32,7 +32,10 @@ class File:
 
     @staticmethod
     def list(dir_path):
-        return [File(os.path.abspath(os.path.join(dir_path, name))) for name in os.listdir(dir_path)]
+        try:
+            return [File(os.path.abspath(os.path.join(dir_path, name))) for name in os.listdir(dir_path)]
+        except PermissionError:
+            return []
 
     @staticmethod
     def calc_uuid(path):
