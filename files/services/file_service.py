@@ -10,20 +10,18 @@ import logging
 
 class FileService:
     def list(self):
-        files = File.roots()
-        self._save_paths(files)
-        return files
+        return [File(record['path']) for record in Path.objects.filter(parent_uuid=None).values('path')]
 
     def get(self, uuid):
         try:
-            path = Path.objects.get(uuid=uuid).path
-            file = File(path)
-            self._save_paths(file.children)
-            return file
+            target = Path.objects.get(uuid=uuid)
+            return File(target.path,
+                        [File(child['path']) for child in Path.objects.filter(parent_uuid=uuid).values('path')])
         except ObjectDoesNotExist:
             return None
 
-    def _save_paths(self, files):
+    @staticmethod
+    def _save_paths(files):
         for file in files:
             Path.objects.update_or_create(
                 uuid=file.uuid,

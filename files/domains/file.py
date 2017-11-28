@@ -22,9 +22,10 @@ class FileType(Enum):
 
 
 class File:
-    def __init__(self, path):
+    def __init__(self, path, children = None):
         self._uuid = File.calc_uuid(path)
         self._path = path
+        self._children = children
 
     @staticmethod
     def roots():
@@ -51,7 +52,8 @@ class File:
 
     @property
     def name(self):
-        return os.path.basename(self.path)
+        name = os.path.basename(self.path)
+        return name
 
     @property
     def size(self):
@@ -63,4 +65,4 @@ class File:
 
     @property
     def children(self):
-        return File.list(self.path) if self.type == FileType.DIR else []
+        return self._children if self._children else File.list(self.path) if self.type == FileType.DIR else []
