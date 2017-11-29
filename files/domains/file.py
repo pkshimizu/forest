@@ -22,7 +22,7 @@ class FileType(Enum):
 
 
 class File:
-    def __init__(self, path, children = None):
+    def __init__(self, path, children=None):
         self._uuid = File.calc_uuid(path)
         self._path = path
         self._children = children

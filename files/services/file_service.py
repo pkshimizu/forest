@@ -9,14 +9,21 @@ import logging
 
 
 class FileService:
-    def list(self):
-        return [File(record['path']) for record in Path.objects.filter(parent_uuid=None).values('path')]
+    def list(self, use_cache=False):
+        if use_cache:
+            return [File(record.path) for record in Path.objects.filter(parent_uuid=None)]
+        files = File('/').children
+        FileService._save_paths(files)
+        return files
 
-    def get(self, uuid):
+    def get(self, uuid, use_cache=False):
         try:
             target = Path.objects.get(uuid=uuid)
-            return File(target.path,
-                        [File(child['path']) for child in Path.objects.filter(parent_uuid=uuid).values('path')])
+            if use_cache:
+                return File(target.path, [File(child.path) for child in Path.objects.filter(parent_uuid=uuid)])
+            file = File(target.path)
+            FileService._save_paths(file.children)
+            return file
         except ObjectDoesNotExist:
             return None
 
