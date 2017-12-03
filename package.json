@@ -1,0 +1,23 @@
+{
+  "name": "forest",
+  "version": "1.0.0",
+  "description": "## 環境設定 ```bash $ pip install -r requirements.txt ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkshimizu/forest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkshimizu/forest/issues"
+  },
+  "homepage": "https://github.com/pkshimizu/forest#readme",
+  "devDependencies": {
+    "create-react-app": "^1.4.3"
+  }
+}
