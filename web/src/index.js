@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 
 import 'materialize-css'
 import '../node_modules/materialize-css/dist/css/materialize.min.css'
-import './app.css'
 
 import SiteHeader from "./components/site_header";
 

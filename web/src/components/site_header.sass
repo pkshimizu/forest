@@ -1,0 +1,36 @@
+$site_color: #6490cd
+
+header.site-header
+
+  nav
+    background-color: $site_color
+
+  .header-search-wrapper
+    display: inline-block
+    position: relative
+    margin: 10px auto 0 260px
+    width: calc(100% - 600px)
+    height: 40px
+
+  .material-icons
+    position: absolute
+    top: 6px
+    left: 24px
+    line-height: 32px
+
+  .header-search-input
+    display: block
+    padding: 8px 8px 8px 72px
+    height: 24px
+    border: none
+    border-radius: 3px
+    background: rgba(255, 255, 255, 0.3)
+
+    &:hover
+      background: rgba(255, 255, 255, 0.4)
+
+    &:focus
+      color: #333
+      background: rgba(255, 255, 255, 0.5)
+      border-bottom: none !important
+      box-shadow: none !important

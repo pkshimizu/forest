@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import './site_header.css'
+
 export default class SiteHeader extends Component {
   render() {
     return (
