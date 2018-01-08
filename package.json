@@ -19,5 +19,6 @@
   "homepage": "https://github.com/pkshimizu/forest#readme",
   "devDependencies": {
     "create-react-app": "^1.4.3"
-  }
+  },
+  "dependencies": {}
 }

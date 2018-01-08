@@ -8,15 +8,13 @@ import { Provider } from "react-redux";
 import 'materialize-css'
 import '../node_modules/materialize-css/dist/css/materialize.min.css'
 
-import SiteHeader from "./components/site_header";
+import SiteLayout from "./components/site_layout";
 
 const store = createStore(reducers);
 
 render(
   <Provider store={store}>
-    <div>
-      <SiteHeader/>
-    </div>
+    <SiteLayout/>
   </Provider>,
   document.getElementById('root')
 );
