@@ -13,7 +13,6 @@ import '../node_modules/materialize-css/dist/css/materialize.min.css'
 import SiteLayout from "./components/site_layout";
 
 const client = axios.create({
-  baseURL:'http://localhost:8000',
   responseType: 'json'
 });
 
