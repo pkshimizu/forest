@@ -11,7 +11,7 @@ const CardView = lifecycle({
 })(({files}) => {
   return (
     <div className={"row"}>
-      {files.map(file => {
+      {files.current_files.map(file => {
         return (
           <div key={file.uuid} className={"col s3"}>
             <Card file={file}/>

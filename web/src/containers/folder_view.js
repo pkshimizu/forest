@@ -4,16 +4,7 @@ import actions from "../actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    files: [
-      {
-        uuid: '1234567890',
-        name: 'file name1'
-      },
-      {
-        uuid: '1234567891',
-        name: 'file name2'
-      },
-    ]
+    files: state.files
   }
 };
 

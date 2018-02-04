@@ -1,7 +1,7 @@
 import {actionTypes} from "../actions";
 
 const initState = {
-  files: []
+  current_files: []
 };
 
 export default (state = initState, action) => {
@@ -11,7 +11,7 @@ export default (state = initState, action) => {
     case actionTypes.LOAD_FILES:
       return state;
     case actionTypes.LOAD_FILES_SUCCESS:
-      return state;
+      return {...state, current_files: action.payload.data};
     default:
       return state;
   }

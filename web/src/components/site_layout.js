@@ -9,7 +9,9 @@ const SiteLayout = pure(() => {
       <div>
         <SiteHeader/>
       </div>
-      <FolderView/>
+      <div className={"container"}>
+        <FolderView/>
+      </div>
     </div>
   )
 });
