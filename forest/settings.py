@@ -125,5 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# For develop
-MIDDLEWARE.append('files.middleware.dev_cors_middleware')
+try:
+    from local_settings import *
+except ImportError:
+    pass

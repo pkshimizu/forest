@@ -8,13 +8,13 @@ const CardView = lifecycle({
   componentDidMount() {
     this.props.onLoadFiles();
   }
-})(({files}) => {
+})(({files, onLoadFiles}) => {
   return (
     <div className={"row"}>
       {files.current_files.map(file => {
         return (
           <div key={file.uuid} className={"col s3"}>
-            <Card file={file}/>
+            <Card file={file} onLoadFiles={onLoadFiles}/>
           </div>
         )
       })}

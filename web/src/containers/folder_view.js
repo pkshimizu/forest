@@ -10,9 +10,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLoadFiles: () => {
-      dispatch(actions.beginLoadFiles());
-      dispatch(actions.loadFiles());
+    onLoadFiles: (uuid) => {
+      dispatch(actions.loadFiles(uuid));
     }
   }
 };
