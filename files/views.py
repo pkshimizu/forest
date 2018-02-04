@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from forest import settings
 
 
-def index():
+def index(requrest):
     try:
         with open(os.path.join(settings.WEB_BASE_DIR, 'build', 'index.html')) as f:
             return HttpResponse(f.read())

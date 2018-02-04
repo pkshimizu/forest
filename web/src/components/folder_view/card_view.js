@@ -1,15 +1,21 @@
 import React from 'react'
-import {pure} from 'recompose'
+import {lifecycle} from 'recompose'
 import Card from './card'
 
 import './card_view.css'
 
-const CardView = pure(({files}) => {
+const CardView = lifecycle({
+  componentDidMount() {
+    this.props.onLoadFiles();
+  }
+})(({files}) => {
   return (
-    <div>
+    <div className={"row"}>
       {files.map(file => {
         return (
-          <Card file={file}/>
+          <div key={file.uuid} className={"col s3"}>
+            <Card file={file}/>
+          </div>
         )
       })}
     </div>

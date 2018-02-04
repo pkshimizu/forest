@@ -7,8 +7,8 @@ import './card.css'
 const Card = pure(({file}) => {
   return (
     <div className={"card"}>
-      <div className={"card-image"}>
-        <div className={"card-title"}>{file.name}</div>
+      <div className={"card-content"}>
+        <span className={"card-title"}>{file.name}</span>
       </div>
       <div className={"card-content"}>
       </div>
