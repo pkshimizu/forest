@@ -35,7 +35,7 @@ class FileService:
         delete_uuids = []
 
         for file_child in file_children.values():
-            if file_child not in path_children:
+            if file_child.uuid not in path_children:
                 add_paths.append(Path(uuid=file_child.uuid, path=file_child.path, parent_uuid=parent_uuid))
 
         for path_child in path_children:

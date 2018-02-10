@@ -10,6 +10,9 @@ export default (state = initState, action) => {
     case actionTypes.LOAD_FILES:
       return {...state, loading: true};
     case actionTypes.LOAD_FILES_SUCCESS:
+      if(action.payload.data.children) {
+        return {...state, current_files: action.payload.data.children, loading: false};
+      }
       return {...state, current_files: action.payload.data, loading: false};
     default:
       return state;
