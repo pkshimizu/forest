@@ -1,16 +1,15 @@
 import React from 'react'
 import {pure} from 'recompose'
 import SiteHeader from "./site_header";
-import FolderView from "../containers/folder_view"
 
-const SiteLayout = pure(() => {
+const SiteLayout = pure((children) => {
   return (
     <div>
       <div>
         <SiteHeader/>
       </div>
       <div className={"container"}>
-        <FolderView/>
+        {children.children}
       </div>
     </div>
   )
