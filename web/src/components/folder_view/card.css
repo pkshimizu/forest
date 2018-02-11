@@ -1,2 +1,10 @@
-.card {
-  word-wrap: break-word; }
+.card.small {
+  position: relative;
+  word-wrap: break-word;
+  overflow: hidden;
+  height: 161px; }
+  .card.small:hover {
+    border: #6490cd 3px solid; }
+  .card.small .card-content .card-title {
+    font-size: 14px;
+    line-height: 24px; }
