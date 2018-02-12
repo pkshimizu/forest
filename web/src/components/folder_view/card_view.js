@@ -4,6 +4,16 @@ import Card from './card'
 
 import './card_view.css'
 
+const pickup_files = (files, types) => {
+  let result = [];
+  for(let file of files) {
+    if (types.indexOf(file.type) >= 0) {
+      result.push(file);
+    }
+  }
+  return result;
+};
+
 const CardView = lifecycle({
   componentDidMount() {
     this.props.onLoadFiles(this.props.params.uuid);
@@ -15,14 +25,27 @@ const CardView = lifecycle({
   }
 })(({files}) => {
   return (
-    <div className={"row"}>
-      {files.current_files.map(file => {
-        return (
-          <div key={file.uuid} className={"col s3"}>
-            <Card file={file}/>
-          </div>
-        )
-      })}
+    <div>
+      <span>Folders</span>
+      <div className={"row"}>
+        {pickup_files(files.current_files, ['dir']).map(folder => {
+          return (
+            <div key={folder.uuid} className={"col s3"}>
+              <Card file={folder}/>
+            </div>
+          )
+        })}
+      </div>
+      <span>Files</span>
+      <div className={"row"}>
+        {pickup_files(files.current_files, ['file', 'other']).map(folder => {
+          return (
+            <div key={folder.uuid} className={"col s3"}>
+              <Card file={folder}/>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 });

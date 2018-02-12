@@ -2,6 +2,8 @@ import React from 'react'
 import {pure} from 'recompose'
 import SiteHeader from "./site_header";
 
+import './site_layout.css'
+
 const SiteLayout = pure((children) => {
   return (
     <div>

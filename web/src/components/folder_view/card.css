@@ -6,5 +6,5 @@
   .card.small:hover {
     border: #6490cd 3px solid; }
   .card.small .card-content .card-title {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px; }
