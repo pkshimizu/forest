@@ -23,7 +23,7 @@ const CardView = lifecycle({
       this.props.onLoadFiles(nextProps.params.uuid);
     }
   }
-})(({files}) => {
+})(({files, onOpenFile}) => {
   return (
     <div>
       <span>Folders</span>
@@ -31,7 +31,7 @@ const CardView = lifecycle({
         {pickup_files(files.current_files, ['dir']).map(folder => {
           return (
             <div key={folder.uuid} className={"col s3"}>
-              <Card file={folder}/>
+              <Card file={folder} openFile={onOpenFile}/>
             </div>
           )
         })}
@@ -41,7 +41,7 @@ const CardView = lifecycle({
         {pickup_files(files.current_files, ['file', 'other']).map(folder => {
           return (
             <div key={folder.uuid} className={"col s3"}>
-              <Card file={folder}/>
+              <Card file={folder} openFile={onOpenFile}/>
             </div>
           )
         })}

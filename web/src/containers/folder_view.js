@@ -12,6 +12,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onLoadFiles: (uuid) => {
       dispatch(actions.loadFiles(uuid));
+    },
+    onOpenFile: (uuid) => {
+      dispatch(actions.openFile(uuid));
     }
   }
 };

@@ -3,8 +3,10 @@
   word-wrap: break-word;
   overflow: hidden;
   height: 161px; }
-  .card.small:hover {
-    border: #6490cd 3px solid; }
+  .card.small:hover .card-action {
+    display: block; }
+  .card.small .card-action {
+    display: None; }
   .card.small .card-content .card-title {
     font-size: 16px;
     line-height: 24px; }

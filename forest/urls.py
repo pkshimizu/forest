@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework_swagger.views import get_swagger_view
+
 from files.apis.urls import router as files_api_router
+
+swagger_view = get_swagger_view(title='Forest API')
 
 urlpatterns = [
     url(r'^files/', include('files.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^api/$', swagger_view),
     url(r'^api/files/', include(files_api_router.urls)),
 ]

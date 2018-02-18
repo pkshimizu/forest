@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -44,3 +45,11 @@ class FileService:
 
         Path.objects.bulk_create(add_paths)
         Path.objects.filter(uuid__in=delete_uuids).delete()
+
+    def execute(self, uuid):
+        try:
+            target = Path.objects.get(uuid=uuid)
+            if os.name == 'posix':
+                subprocess.Popen(['open', target.path])
+        except ObjectDoesNotExist:
+            pass

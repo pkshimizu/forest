@@ -1,4 +1,5 @@
 from rest_framework import viewsets, status
+from rest_framework.decorators import detail_route
 from rest_framework.response import Response
 
 from files.apis.serializers import FileItemSerializer, FileSerializer, FileListSerializer
@@ -24,3 +25,8 @@ class FileViewSet(viewsets.ViewSet):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @detail_route(methods=['GET'])
+    def application(self, request, pk):
+        file_service = FileService()
+        file_service.execute(pk)
+        return Response()
