@@ -1,4 +1,5 @@
 import {actionTypes} from "../actions";
+import * as Materialize from "materialize-css";
 
 const initState = {
   current_files: [],
@@ -6,6 +7,9 @@ const initState = {
 };
 
 export default (state = initState, action) => {
+  if (action.type.endsWith("_FAIL")) {
+    Materialize.toast(action.error.message, 4000, "toast_error");
+  }
   switch(action.type) {
     case actionTypes.LOAD_FILES:
       return {...state, loading: true};
