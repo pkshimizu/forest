@@ -3,6 +3,7 @@ import {lifecycle} from 'recompose'
 import Card from './card'
 
 import './card_view.css'
+import Breadcrumbs from "../breadcrumbs";
 
 const pickup_files = (files, types) => {
   let result = [];
@@ -26,6 +27,7 @@ const CardView = lifecycle({
 })(({files, onOpenFile}) => {
   return (
     <div>
+      <Breadcrumbs parents={files.parents}/>
       <span>Folders</span>
       <div className={"row"}>
         {pickup_files(files.current_files, ['dir']).map(folder => {

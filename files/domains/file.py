@@ -53,6 +53,8 @@ class File:
     @property
     def name(self):
         name = os.path.basename(self.path)
+        if name == "":
+            return "/"
         return name
 
     @property
@@ -66,3 +68,22 @@ class File:
     @property
     def children(self):
         return self._children if self._children else File.list(self.path) if self.type == FileType.DIR else []
+
+    @property
+    def parent(self):
+        parent_path = os.path.dirname(self.path)
+        return File(parent_path)
+
+    @property
+    def parents(self):
+        files = []
+        file = self
+        files.insert(0, file)
+        while not file.is_root:
+            file = file.parent
+            files.insert(0, file)
+        return files
+
+    @property
+    def is_root(self):
+        return self.path == "/"

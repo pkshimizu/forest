@@ -11,6 +11,11 @@ class FileListSerializer(serializers.Serializer):
         pass
 
 
+class ParentFileSerializer(serializers.Serializer):
+    uuid = serializers.CharField(max_length=36)
+    name = serializers.CharField(max_length=1024)
+
+
 class FileItemSerializer(serializers.Serializer):
     uuid = serializers.CharField(max_length=36)
     path = serializers.CharField(max_length=8192)
@@ -32,10 +37,10 @@ class FileSerializer(serializers.Serializer):
     type = serializers.CharField(max_length=8)
     size = serializers.IntegerField()
     children = FileItemSerializer(many=True)
+    parents = ParentFileSerializer(many=True)
 
     def update(self, instance, validated_data):
         pass
 
     def create(self, validated_data):
         pass
-
