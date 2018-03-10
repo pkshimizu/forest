@@ -1,6 +1,7 @@
 import os
 import uuid
 from enum import Enum
+from operator import attrgetter
 
 
 class FileType(Enum):
@@ -67,7 +68,8 @@ class File:
 
     @property
     def children(self):
-        return self._children if self._children else File.list(self.path) if self.type == FileType.DIR else []
+        children = self._children if self._children else File.list(self.path) if self.type == FileType.DIR else []
+        return sorted(children, key=attrgetter('name'))
 
     @property
     def parent(self):

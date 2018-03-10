@@ -28,25 +28,27 @@ const CardView = lifecycle({
   return (
     <div>
       <Breadcrumbs parents={files.parents}/>
-      <span>Folders</span>
-      <div className={"row"}>
-        {pickup_files(files.current_files, ['dir']).map(folder => {
-          return (
-            <div key={folder.uuid} className={"col s3"}>
-              <Card file={folder} openFile={onOpenFile}/>
-            </div>
-          )
-        })}
-      </div>
-      <span>Files</span>
-      <div className={"row"}>
-        {pickup_files(files.current_files, ['file', 'other']).map(folder => {
-          return (
-            <div key={folder.uuid} className={"col s3"}>
-              <Card file={folder} openFile={onOpenFile}/>
-            </div>
-          )
-        })}
+      <div className={"folder-view-main"}>
+        <span>Folders</span>
+        <div className={"row"}>
+          {pickup_files(files.current_files, ['dir']).map(folder => {
+            return (
+              <div key={folder.uuid} className={"col s3"}>
+                <Card file={folder} openFile={onOpenFile}/>
+              </div>
+            )
+          })}
+        </div>
+        <span>Files</span>
+        <div className={"row"}>
+          {pickup_files(files.current_files, ['file', 'other']).map(folder => {
+            return (
+              <div key={folder.uuid} className={"col s3"}>
+                <Card file={folder} openFile={onOpenFile}/>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

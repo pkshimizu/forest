@@ -1,0 +1,5 @@
+nav.breadcrumbs {
+  position: fixed;
+  left: 0;
+  z-index: 1000;
+  background-color: #85BEAB; }

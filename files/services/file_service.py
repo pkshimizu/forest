@@ -13,7 +13,7 @@ class FileService:
     def list(self, use_cache=False):
         if use_cache:
             return [File(record.path) for record in Path.objects.filter(parent_uuid=None)]
-        files = File('/').children
+        files = [File('/')]
         self._update_paths(None, files)
         return files
 
