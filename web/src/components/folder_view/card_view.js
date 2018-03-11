@@ -1,9 +1,10 @@
 import React from 'react'
 import {lifecycle} from 'recompose'
-import Card from './card'
+import FileCard from './file_card'
 
 import './card_view.css'
-import Breadcrumbs from "../breadcrumbs";
+import FilePathBreadcrumbs from "../file_path_breadcrumbs";
+import {Col, Row} from "react-materialize";
 
 const pickup_files = (files, types) => {
   let result = [];
@@ -30,32 +31,32 @@ const CardView = lifecycle({
 })(({current_files, parents, selected_uuids, onOpenFile, selectFile, clearSelectedFile}) => {
   return (
     <div>
-      <Breadcrumbs parents={parents}/>
+      <FilePathBreadcrumbs parents={parents}/>
       <div className={"folder-view-main"}>
         <span>Folders</span>
-        <div className={"row"}>
+        <Row>
           {pickup_files(current_files, ['dir']).map(folder => {
             return (
-              <div key={folder.uuid} className={"col s3"}>
-                <Card file={folder} openFile={onOpenFile} selectFile={selectFile}
+              <Col s={3} key={folder.uuid}>
+                <FileCard file={folder} openFile={onOpenFile} selectFile={selectFile}
                       selected={selected_uuids.includes(folder.uuid)}
                 />
-              </div>
+              </Col>
             )
           })}
-        </div>
+        </Row>
         <span>Files</span>
-        <div className={"row"}>
+        <Row className={"row"}>
           {pickup_files(current_files, ['file', 'other']).map(file => {
             return (
-              <div key={file.uuid} className={"col s3"}>
-                <Card file={file} openFile={onOpenFile} selectFile={selectFile}
+              <Col s={3} key={file.uuid}>
+                <FileCard file={file} openFile={onOpenFile} selectFile={selectFile}
                       selected={selected_uuids.includes(file.uuid)}
                 />
-              </div>
+              </Col>
             )
           })}
-        </div>
+        </Row>
       </div>
     </div>
   )
