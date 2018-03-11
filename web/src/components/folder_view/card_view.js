@@ -23,28 +23,35 @@ const CardView = lifecycle({
     if (nextProps.params.uuid !== this.props.params.uuid) {
       this.props.onLoadFiles(nextProps.params.uuid);
     }
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      this.props.clearSelectedFile();
+    }
   }
-})(({files, onOpenFile}) => {
+})(({current_files, parents, selected_uuids, onOpenFile, selectFile, clearSelectedFile}) => {
   return (
     <div>
-      <Breadcrumbs parents={files.parents}/>
+      <Breadcrumbs parents={parents}/>
       <div className={"folder-view-main"}>
         <span>Folders</span>
         <div className={"row"}>
-          {pickup_files(files.current_files, ['dir']).map(folder => {
+          {pickup_files(current_files, ['dir']).map(folder => {
             return (
               <div key={folder.uuid} className={"col s3"}>
-                <Card file={folder} openFile={onOpenFile}/>
+                <Card file={folder} openFile={onOpenFile} selectFile={selectFile}
+                      selected={selected_uuids.includes(folder.uuid)}
+                />
               </div>
             )
           })}
         </div>
         <span>Files</span>
         <div className={"row"}>
-          {pickup_files(files.current_files, ['file', 'other']).map(folder => {
+          {pickup_files(current_files, ['file', 'other']).map(file => {
             return (
-              <div key={folder.uuid} className={"col s3"}>
-                <Card file={folder} openFile={onOpenFile}/>
+              <div key={file.uuid} className={"col s3"}>
+                <Card file={file} openFile={onOpenFile} selectFile={selectFile}
+                      selected={selected_uuids.includes(file.uuid)}
+                />
               </div>
             )
           })}

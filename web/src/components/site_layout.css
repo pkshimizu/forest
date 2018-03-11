@@ -3,3 +3,8 @@ body {
 
 .toast_error {
   background-color: #FF5252; }
+
+.btn-floating {
+  background-color: #85BEAB; }
+  .btn-floating i {
+    color: white; }

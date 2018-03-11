@@ -6,11 +6,37 @@
   overflow: hidden
   height: 161px
   &:hover
-    .card-action
-      display: block
-  .card-action
-    display: None
+    .card-content
+      .open-button
+        display: block
+      .select-button
+        display: block
+      .menu-button
+        display: block
   .card-content
     .card-title
       font-size: 16px
       line-height: 24px
+    .open-button
+      display: None
+      position: absolute
+      top: 10px
+      right: 10px
+    .select-button
+      display: None
+      position: absolute
+      bottom: 10px
+      left: 10px
+      background-color: white
+      i
+        color: $primary_color
+      &.selected
+        display: block
+        background-color: $primary_color
+        i
+          color: white
+    .menu-button
+      display: None
+      position: absolute
+      bottom: 10px
+      right: 10px
