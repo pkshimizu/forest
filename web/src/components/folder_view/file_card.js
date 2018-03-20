@@ -5,7 +5,9 @@ import {Button, Card} from 'react-materialize'
 
 import './file_card.css'
 import Link from "react-router/es/Link";
+import {ContextMenu, ContextMenuProvider, Item, Separator} from "react-contexify";
 
+import "react-contexify/dist/ReactContexify.min.css"
 
 const FileCard = pure(({file, selected, openFile, selectFile}) => {
   const open = (e) => {
@@ -22,14 +24,25 @@ const FileCard = pure(({file, selected, openFile, selectFile}) => {
   }
 
   return (
-    <Card className={"small"} title={title}>
-      <Button waves="light" floating icon={"open_in_new"} className={"open-button"} onClick={open}/>
-      <Button waves="light" floating icon={"check"} className={ClassNames({
-        "select-button": true,
-        "selected": selected
-      })} onClick={select}/>
-      <Button waves="light" floating icon={"menu"} className={"menu-button"}/>
-    </Card>
+    <div>
+      <ContextMenuProvider id={`file_context_menu_${file.uuid}`}>
+        <Card className={"small"} title={title}>
+          <Button waves="light" floating icon={"open_in_new"} className={"open-button"} onClick={open}/>
+          <Button waves="light" floating icon={"check"} className={ClassNames({
+            "select-button": true,
+            "selected": selected
+            })} onClick={select}/>
+          <Button waves="light" floating icon={"more_vert"} className={"detail-button"}/>
+        </Card>
+      </ContextMenuProvider>
+      <ContextMenu id={`file_context_menu_${file.uuid}`} className={"file_context_menu"} animation={"fade"}>
+        <Item><i className={"material-icons"}>edit</i>Rename</Item>
+        <Separator/>
+        <Item><i className={"material-icons"}>content_copy</i>Copy</Item>
+        <Item><i className={"material-icons"}>forward</i>Move</Item>
+        <Item><i className={"material-icons"}>delete</i>Delete</Item>
+      </ContextMenu>
+    </div>
   )
 });
 

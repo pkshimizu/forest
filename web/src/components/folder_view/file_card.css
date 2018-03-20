@@ -7,7 +7,7 @@
     display: block; }
   .card.small:hover .card-content .select-button {
     display: block; }
-  .card.small:hover .card-content .menu-button {
+  .card.small:hover .card-content .detail-button {
     display: block; }
   .card.small .card-content .card-title {
     font-size: 16px;
@@ -30,8 +30,11 @@
       background-color: #85BEAB; }
       .card.small .card-content .select-button.selected i {
         color: white; }
-  .card.small .card-content .menu-button {
+  .card.small .card-content .detail-button {
     display: None;
     position: absolute;
     bottom: 10px;
     right: 10px; }
+
+.file_context_menu {
+  z-index: 10000; }
