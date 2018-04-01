@@ -14,7 +14,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import SiteLayout from "./components/site_layout";
-import FolderView from "./containers/folder_view";
+import FolderView from "./containers/card_view";
 
 const client = axios.create({
   responseType: 'json'

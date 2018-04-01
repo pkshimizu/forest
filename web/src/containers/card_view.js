@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import CardView from "../components/folder_view/card_view";
+import CardView from "../components/card_view";
 import actions from "../actions";
 
 const mapStateToProps = (state, ownProps) => {
